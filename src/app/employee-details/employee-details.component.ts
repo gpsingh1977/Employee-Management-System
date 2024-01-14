@@ -10,7 +10,7 @@ import { EmployeeService } from '../services/employee-service';
   styleUrls: ['./employee-details.component.scss']
 })
 export class EmployeeDetailsComponent implements OnInit{
-	employee$!: Observable<IEmployee|null>;
+	employee$!: Observable<IEmployee>;
 
 	constructor(private route: ActivatedRoute, private employeeService: EmployeeService) {}
 

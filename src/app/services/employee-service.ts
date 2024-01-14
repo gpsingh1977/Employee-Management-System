@@ -39,8 +39,8 @@ export class EmployeeService {
 		}
 	}
 
-	getEmployeeById(id: number): IEmployee | null {
-		return this.employees.find(employee => employee.id === id) ?? null;
+	getEmployeeById(id: number): IEmployee {
+		return this.employees.find(employee => employee.id === id)!;
 	}
 
 	createEmployee(employee: IEmployee): Observable<IEmployee> {
