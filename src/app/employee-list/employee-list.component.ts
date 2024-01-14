@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { EmployeeService } from '../services/employee-service';
-import { BehaviorSubject, Observable, combineLatest, debounceTime, distinctUntilChanged, map, startWith, takeUntil } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, combineLatest, debounceTime, distinctUntilChanged, map, startWith, takeUntil } from 'rxjs';
 import { IEmployee } from '../models/employee.interface';
 import { FormControl } from '@angular/forms';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
@@ -16,7 +16,7 @@ enum SortOrder {
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.scss']
 })
-export class EmployeeListComponent implements OnInit{
+export class EmployeeListComponent implements OnInit, OnDestroy{
   cols = 3;
   rowHeight = '325px';
   employees$!: Observable<IEmployee[]>;
@@ -27,12 +27,14 @@ export class EmployeeListComponent implements OnInit{
   sortByFirstNameOrder$: BehaviorSubject<number> = new BehaviorSubject<number>(SortOrder.none);
 
   currentSortIndex = SortOrder.none;
+  
+  sub!: Subscription;
 
 	constructor(private employeeService: EmployeeService, private responsive: BreakpointObserver) {
   }
 
 	ngOnInit() {
-    this.responsive.observe([
+    this.sub = this.responsive.observe([
       Breakpoints.TabletPortrait,
       Breakpoints.TabletLandscape,
       Breakpoints.HandsetPortrait,
@@ -109,7 +111,7 @@ export class EmployeeListComponent implements OnInit{
     this.sortByFirstNameOrder$.next(this.currentSortIndex);
   }
 
-  createEmployee(){
-
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }
