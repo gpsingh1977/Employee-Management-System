@@ -1,0 +1,46 @@
+<button mat-raised-button color="primary" routerLink="/new-employee">New Employee</button>
+
+<div class="container-btns">
+	<div class="search-btns">
+		<mat-form-field>
+			<input type="text" matInput placeholder="Search Designation" [formControl]="searchDesignation">
+			<button matSuffix mat-icon-button (click)="resetSearchDesignation()">
+				<mat-icon>close</mat-icon>
+			</button>
+		</mat-form-field>
+
+		<mat-form-field>
+			<input type="text" matInput placeholder="Search Department" [formControl]="searchDepartment">
+			<button matSuffix mat-icon-button (click)="resetSearchDepartment()">
+				<mat-icon>close</mat-icon>
+			</button>
+		</mat-form-field>
+	</div>
+	<button *ngIf="currentSortIndex===0" 
+		mat-icon-button color="primary" 
+		(click)="toggleSortOrder()" class="sort-btn"
+		matTooltip="Default sort order"
+		matTooltipShowDelay="500">
+		<mat-icon>remove</mat-icon>
+	</button>
+	<button *ngIf="currentSortIndex===1" 
+		mat-icon-button color="primary" 
+		(click)="toggleSortOrder()" class="sort-btn"
+		matTooltip="Sorting by first name in ascending order"
+		matTooltipShowDelay="500">
+		<mat-icon>arrow_downward</mat-icon>
+	</button>
+	<button *ngIf="currentSortIndex===2" 
+		mat-icon-button color="primary" 
+		(click)="toggleSortOrder()" class="sort-btn"
+		matTooltip="Sorting by first name in descending order"
+		matTooltipShowDelay="500">
+		<mat-icon>arrow_upward</mat-icon>
+	</button>
+</div>
+
+<mat-grid-list [cols]="cols" [rowHeight]="rowHeight" class="employee-list-container">
+	<mat-grid-tile *ngFor="let employee of employees$ | async" class="employee-tile">
+		<app-employee  [employee]="employee"></app-employee>
+	</mat-grid-tile>
+</mat-grid-list>

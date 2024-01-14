@@ -1,0 +1,28 @@
+<a class="back" href="javascript:void(0)"
+   [routerLink]="['../']">
+	 <mat-icon>chevron_left</mat-icon>
+	 Back
+</a>
+
+<mat-card class="employee-details-container" *ngIf="employee$ | async as employee">
+	<mat-card-header>
+		<mat-card-title>{{ employee.firstName + ' ' + employee.lastName }}</mat-card-title>
+	</mat-card-header>
+	<hr>
+	<mat-card-content>
+		<p>Employee Id: {{ employee.employeeId}}</p>
+		<p>Gender: {{ employee.gender}}</p>
+		<p>Email: {{ employee.email}}</p>
+		<p>Designation: {{ employee.designation}}</p>
+		<p>Department: {{ employee.department}}</p>
+		<p>Employment type: {{ employee.employmentType}}</p>
+		<p>Home address: {{ employee.homeAddress}}</p>
+		<p>Mobile: {{ employee.homePhone}}</p>
+	</mat-card-content>
+
+	<mat-card-actions class="employee-detail-buttons">
+		<button mat-raised-button color="accent" [routerLink]="['/edit-employee', employee.id]">
+			Edit Details
+		</button>
+	</mat-card-actions>
+</mat-card>

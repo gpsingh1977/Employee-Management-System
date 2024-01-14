@@ -1,27 +1,54 @@
-# EmpMgmntGurpreet
+# EmpMgmntGurpreet 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+## Environment Setup
 
-## Development server
+My working environment was:
+Angular CLI: 16.1.0
+Node: 18.17.0
+Package Manager: npm 8.19.3
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Please make sure you have the same Angular CLI version on your machine. Please do following to ensure that:
+npm uninstall -g angular-cli
+npm cache clean --force
+npm install -g angular-cli@16.1.0
 
-## Code scaffolding
+Node and npm versions are not that important and under most situations no change should be required for them.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## API Server
 
-## Build
+I have used a local node api server to serve the Employees database. Please do 
+npm install -g ts-node
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+before you can run the server.
 
-## Running unit tests
+For running the server please run
+npm run server 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+in local project folder.
 
-## Running end-to-end tests
+Please make sure "HTTP REST Api Server running at http://localhost:9000" is printed on console which will confirm server started properly.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Running Angular App
 
-## Further help
+Run
+npm install
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+to install all dependencies.
+
+Then run 
+npm run start 
+
+to run the app. Navigate to https://localhost:4200/
+
+You may get SSL certificate error when you go to https://localhost:4200/ in your browser. To fix that, paste this
+in your browser:
+chrome://flags/#allow-insecure-localhost
+
+and change "Allow invalid certificates for resources loaded from localhost." to enabled and restart your browser.
+
+## Notes
+
+I have designed the app to meet all the requirements except Unit tests. As I had told the folks earlier, I won't have time to write the tests at this point. That is a substaintial effort in itself.
+
+I have not used local storage as I think persisting data in local backend server is more elegant solution.
+

@@ -1,0 +1,53 @@
+<div class="create-container">
+	<h3 mat-dialog-title>Create New Employee</h3>
+
+	<div [formGroup]="createEmployeeForm" class="create-content">
+		<mat-form-field>
+			<input matInput placeholder="First Name" formControlName="firstName">
+			<mat-error *ngIf="createEmployeeForm.get('firstName')?.errors?.required">
+				First Name is required
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field>
+			<input matInput placeholder="Last Name" formControlName="lastName">
+			<mat-error *ngIf="createEmployeeForm.get('lastName')?.errors?.required">
+				Last Name is required
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field>
+			<input matInput placeholder="Email" formControlName="email">
+			<mat-error *ngIf="createEmployeeForm.get('email')?.errors?.required">
+				Email is required
+			</mat-error>
+			<mat-error *ngIf="createEmployeeForm.get('email')?.errors?.email">
+				Please enter valid email
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field>
+			<input matInput placeholder="Designation" formControlName="designation">
+			<mat-error *ngIf="createEmployeeForm.get('designation')?.errors?.required">
+				Designation is required
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field>
+			<input matInput placeholder="Department" formControlName="department">
+			<mat-error *ngIf="createEmployeeForm.get('department')?.errors?.required">
+				Department is required
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field>
+			<input matInput placeholder="Home Phone" formControlName="homePhone" maxlength="10">
+			<mat-error *ngIf="createEmployeeForm.get('homePhone')?.errors?.required">
+				Home phone is required
+			</mat-error>
+			<mat-error *ngIf="createEmployeeForm.get('homePhone')?.errors?.minlength || createEmployeeForm.get('homePhone')?.errors?.pattern">
+				Please enter valid home phone number
+			</mat-error>
+		</mat-form-field>
+	</div>
+
+	<mat-dialog-actions>
+		<button mat-raised-button (click)="close()">Cancel</button>
+		<button mat-raised-button color="primary" (click)="save()" [disabled]="!createEmployeeForm.valid">Save</button>
+	</mat-dialog-actions>
+</div>

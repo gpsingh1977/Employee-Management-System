@@ -1,0 +1,11 @@
+.employee-container {
+	width: 300px;
+	text-align: left;	
+	margin: 20px 20px;
+
+	.employee-buttons {
+		display: flex;
+		justify-content: space-around;
+		margin: 20px 0;
+	}
+}

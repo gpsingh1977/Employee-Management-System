@@ -1,0 +1,35 @@
+.container-btns {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+	margin-bottom: 0;
+
+	.search-btns {
+		display: flex;
+		justify-content: center;
+
+		mat-form-field {
+			margin-right: 20px;
+		}
+	}
+}
+
+@media only screen and (max-width: 550px ) {
+	.container-btns {
+		align-items: center;
+
+		.search-btns {
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.sort-btn {
+			position: relative;
+			bottom: 15px;
+		}
+	}
+}
+
+.employee-tile {
+	margin-bottom: 20px;
+}

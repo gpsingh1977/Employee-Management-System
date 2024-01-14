@@ -1,0 +1,70 @@
+<div class="edit-container">
+	<h3 mat-dialog-title>Edit Employee Details</h3>
+
+	<div [formGroup]="editEmployeeForm" class="edit-content">
+		<mat-form-field>
+			<input matInput placeholder="First Name" formControlName="firstName">
+			<mat-error *ngIf="editEmployeeForm.get('firstName')?.errors?.required">
+				First Name is required
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field>
+			<input matInput placeholder="Last Name" formControlName="lastName">
+			<mat-error *ngIf="editEmployeeForm.get('lastName')?.errors?.required">
+				Last Name is required
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field>
+			<input matInput placeholder="Email" formControlName="email">
+			<mat-error *ngIf="editEmployeeForm.get('email')?.errors?.required">
+				Email is required
+			</mat-error>
+			<mat-error *ngIf="editEmployeeForm.get('email')?.errors?.email">
+				Please enter valid email
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field>
+			<input matInput placeholder="Designation" formControlName="designation">
+			<mat-error *ngIf="editEmployeeForm.get('designation')?.errors?.required">
+				Designation is required
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field>
+			<input matInput placeholder="Department" formControlName="department">
+			<mat-error *ngIf="editEmployeeForm.get('department')?.errors?.required">
+				Department is required
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field>
+			<input matInput placeholder="Home Phone" formControlName="homePhone" maxlength="10">
+			<mat-error *ngIf="editEmployeeForm.get('homePhone')?.errors?.required">
+				Home phone is required
+			</mat-error>
+			<mat-error *ngIf="editEmployeeForm.get('homePhone')?.errors?.minlength || editEmployeeForm.get('homePhone')?.errors?.pattern">
+				Please enter valid home phone number
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field appearance="outline">
+			<mat-label>Gender</mat-label>
+			<mat-select formControlName="gender">
+				<mat-option [value]="'Male'">Male</mat-option>
+				<mat-option [value]="'Female'">Female</mat-option> 
+			</mat-select>
+		</mat-form-field>
+		<mat-form-field appearance="outline">
+			<mat-label>Employment Type</mat-label>
+			<mat-select formControlName="employmentType">
+				<mat-option [value]="'Part-Time'">Part-Time</mat-option>
+				<mat-option [value]="'Full-Time'">Full-Time</mat-option> 
+			</mat-select>
+		</mat-form-field>
+		<mat-form-field>
+			<input matInput placeholder="Home Address" formControlName="homeAddress">
+		</mat-form-field>
+	</div>
+
+	<mat-dialog-actions>
+		<button mat-raised-button (click)="close()">Cancel</button>
+		<button mat-raised-button color="primary" (click)="save()" [disabled]="!editEmployeeForm.valid">Save</button>
+	</mat-dialog-actions>
+</div>

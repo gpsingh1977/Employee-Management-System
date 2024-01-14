@@ -1,0 +1,16 @@
+.app-container {
+	text-align: center;
+	margin: 0 auto;
+
+	.spinner-container {
+		position: fixed;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		background: white;
+		margin-top: 150px;
+		z-index: 100;
+		opacity: 0.5;
+	}
+}
+

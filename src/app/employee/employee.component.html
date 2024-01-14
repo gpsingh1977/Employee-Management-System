@@ -1,0 +1,19 @@
+<mat-card class="employee-container">
+	<mat-card-header>
+		<mat-card-title>{{ employee.firstName + ' ' + employee.lastName }}</mat-card-title>
+	</mat-card-header>
+	<hr>
+	<mat-card-content>
+		<p>Email: {{ employee.email}}</p>
+		<p>Designation: {{ employee.designation}}</p>
+		<p>Department: {{ employee.department}}</p>
+		<p>Mobile: {{ employee.homePhone}}</p>
+	</mat-card-content>
+
+	<mat-card-actions class="employee-buttons">
+		<button mat-raised-button color="primary"
+						[routerLink]="['/employees', employee.id]">
+				Details
+		</button>
+	</mat-card-actions>
+</mat-card>
